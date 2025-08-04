@@ -5,6 +5,7 @@ def main():
     from swap_numbers import number_swapped
     from check_odd_even import odd_even
     from largest_three_num import largest_num
+    from multiplication_table import multiplication_table
 
     parser = argparse.ArgumentParser(description="Modular Python App")
     subparsers = parser.add_subparsers(dest='command')
@@ -32,6 +33,10 @@ def main():
     odd_even_parser = subparsers.add_parser('odd_even', help='Check if a number is odd or even')
     odd_even_parser.add_argument('number', type=int, help='The number to check')
 
+    # Subparser for multiplication table
+    multiplication_parser = subparsers.add_parser('multiplication_table', help='Generate a multiplication table')
+    multiplication_parser.add_argument('number', type=int, help='The number for which to generate the table')
+
     args = parser.parse_args()
 
     if args.command == 'reverse':
@@ -49,6 +54,9 @@ def main():
     elif args.command == 'largest':
         result = largest_num(args.number1, args.number2, args.number3)
         print(f'The largest number is: {result}')
+    elif args.command == 'multiplication_table':
+        result = multiplication_table(args.number)
+        print(''.join(result))
     else:
         parser.print_help()
 
