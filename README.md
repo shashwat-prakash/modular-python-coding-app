@@ -53,6 +53,8 @@ To check if a string is a palindrome, use:
 python src/palindrome_checker.py "your_string_here"
 ```
 
+- And so on for other python codes.
+
 ## Contributing
 
 Feel free to submit issues or pull requests for improvements or additional features.
