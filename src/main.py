@@ -6,6 +6,7 @@ def main():
     from check_odd_even import odd_even
     from largest_three_num import largest_num
     from multiplication_table import multiplication_table
+    from factorial import calc_factorial
 
     parser = argparse.ArgumentParser(description="Modular Python App")
     subparsers = parser.add_subparsers(dest='command')
@@ -37,6 +38,10 @@ def main():
     multiplication_parser = subparsers.add_parser('multiplication_table', help='Generate a multiplication table')
     multiplication_parser.add_argument('number', type=int, help='The number for which to generate the table')
 
+    # Subparser for factorial calculation
+    factorial_parser = subparsers.add_parser('factorial', help='Calculate factorial of a number')
+    factorial_parser.add_argument('number', type=int, help='The number to calculate factorial for')
+
     args = parser.parse_args()
 
     if args.command == 'reverse':
@@ -57,6 +62,9 @@ def main():
     elif args.command == 'multiplication_table':
         result = multiplication_table(args.number)
         print(''.join(result))
+    elif args.command == 'factorial':
+        result = calc_factorial(args.number)
+        print(f'The factorial of {args.number} is: {result}')
     else:
         parser.print_help()
 
