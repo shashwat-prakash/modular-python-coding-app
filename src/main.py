@@ -8,6 +8,7 @@ def main():
     from multiplication_table import multiplication_table
     from factorial import calc_factorial
     from vowels_count import num_of_vowels
+    from celsius_to_fahr import convert_celsius_to_fahr
 
     parser = argparse.ArgumentParser(description="Modular Python App")
     subparsers = parser.add_subparsers(dest='command')
@@ -47,6 +48,10 @@ def main():
     vowels_parser = subparsers.add_parser('vowels_count', help='Count the number of vowels in a string')
     vowels_parser.add_argument('string', type=str, help='The string to count vowels in')
 
+    # Subparser for Celsius to Fahrenheit conversion
+    celsius_parser = subparsers.add_parser('convert_celsius', help='Convert Celsius to Fahrenheit')
+    celsius_parser.add_argument('celsius', type=float, help='Temperature in Celsius to convert')
+
     args = parser.parse_args()
 
     if args.command == 'reverse':
@@ -73,6 +78,9 @@ def main():
     elif args.command == 'vowels_count':
         result = num_of_vowels(args.string)
         print(f'Number of vowels in the string: {result}')
+    elif args.command == 'convert_celsius':
+        fahrenheit = convert_celsius_to_fahr(args.celsius)
+        print(f'{args.celsius} Celsius is {fahrenheit} Fahrenheit')
     else:
         parser.print_help()
 
