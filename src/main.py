@@ -7,6 +7,7 @@ def main():
     from largest_three_num import largest_num
     from multiplication_table import multiplication_table
     from factorial import calc_factorial
+    from vowels_count import num_of_vowels
 
     parser = argparse.ArgumentParser(description="Modular Python App")
     subparsers = parser.add_subparsers(dest='command')
@@ -42,6 +43,10 @@ def main():
     factorial_parser = subparsers.add_parser('factorial', help='Calculate factorial of a number')
     factorial_parser.add_argument('number', type=int, help='The number to calculate factorial for')
 
+    # Subparser for vowel counting
+    vowels_parser = subparsers.add_parser('vowels_count', help='Count the number of vowels in a string')
+    vowels_parser.add_argument('string', type=str, help='The string to count vowels in')
+
     args = parser.parse_args()
 
     if args.command == 'reverse':
@@ -65,6 +70,9 @@ def main():
     elif args.command == 'factorial':
         result = calc_factorial(args.number)
         print(f'The factorial of {args.number} is: {result}')
+    elif args.command == 'vowels_count':
+        result = num_of_vowels(args.string)
+        print(f'Number of vowels in the string: {result}')
     else:
         parser.print_help()
 
