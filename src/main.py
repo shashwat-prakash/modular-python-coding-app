@@ -9,6 +9,7 @@ def main():
     from factorial import calc_factorial
     from vowels_count import num_of_vowels
     from celsius_to_fahr import convert_celsius_to_fahr
+    from calc_circle_area import circle_area
 
     parser = argparse.ArgumentParser(description="Modular Python App")
     subparsers = parser.add_subparsers(dest='command')
@@ -52,6 +53,10 @@ def main():
     celsius_parser = subparsers.add_parser('convert_celsius', help='Convert Celsius to Fahrenheit')
     celsius_parser.add_argument('celsius', type=float, help='Temperature in Celsius to convert')
 
+    # Subparser for circle area calculation
+    circle_parser = subparsers.add_parser('circle_area', help='Calculate the area of a circle')
+    circle_parser.add_argument('radius', type=float, help='Radius of the circle')
+
     args = parser.parse_args()
 
     if args.command == 'reverse':
@@ -81,6 +86,9 @@ def main():
     elif args.command == 'convert_celsius':
         fahrenheit = convert_celsius_to_fahr(args.celsius)
         print(f'{args.celsius} Celsius is {fahrenheit} Fahrenheit')
+    elif args.command == 'circle_area':
+        area = circle_area(args.radius)
+        print(f'The area of the circle with radius {args.radius} is: {area}')
     else:
         parser.print_help()
 
